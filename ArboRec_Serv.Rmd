@@ -20,7 +20,7 @@ particaoArbo = createDataPartition(1:nrow(ArboRec), p=.7)
 treinoArbo = ArboRec[particaoArbo$Resample1,] 
 testeArbo = ArboRec[- particaoArbo$Resample1,] 
 
-arboNaiveBayes = naiveBayes(tp_classificacao_final ~  notificacao_ano + ds_semana_notificacao + no_bairro_residencia + co_distrito_residencia + co_logradouro_residencia + tp_sexo + tp_raca_cor + tp_escolaridade + tp_zona_residencia + tp_classificacao_final + tp_result_exame, treinoArbo)
+arboNaiveBayes = naiveBayes(tp_classificacao_final ~  notificacao_ano + ds_semana_notificacao + no_bairro_residencia + co_distrito_residencia + co_logradouro_residencia + tp_sexo + tp_raca_cor + tp_escolaridade + tp_zona_residencia + tp_result_exame, treinoArbo)
 
 arboNaiveBayes
 
