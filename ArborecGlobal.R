@@ -10,9 +10,21 @@ require(tree)
 
 ArboRec <- read_delim("ArboRec.csv", ";", escape_double = FALSE, trim_ws = TRUE)
 
-#View(ArboRec)
+# Transformando o tp_classificacao_final em: Descartado, Inconclusivo, Dengue
+ArboRec$tp_classificacao_final = ifelse(ArboRec$tp_classificacao_final == 5, 'Descartado', ifelse(ArboRec$tp_classificacao_final == 8, 'Inconclusivo', 'Dengue'))
+
+#Modificando os tipos de dados para Factor
 
 ArboRec$tp_classificacao_final <- as.factor(ArboRec$tp_classificacao_final)
+ArboRec$notificacao_ano <- as.factor(ArboRec$notificacao_ano)
+ArboRec$ds_semana_notificacao <- as.factor(ArboRec$ds_semana_notificacao)
+ArboRec$co_distrito_residencia <- as.factor(ArboRec$co_distrito_residencia)
+ArboRec$co_logradouro_residencia <- as.factor(ArboRec$co_logradouro_residencia)
+ArboRec$tp_sexo <- as.factor(ArboRec$tp_sexo)
+ArboRec$tp_raca_cor <- as.factor(ArboRec$tp_raca_cor)
+ArboRec$tp_escolaridade <- as.factor(ArboRec$tp_escolaridade)
+ArboRec$tp_zona_residencia <- as.factor(ArboRec$tp_zona_residencia)
+ArboRec$tp_result_exame <- as.factor(ArboRec$tp_result_exame)
 
 plot(ArboRec$tp_classificacao_final)
 
@@ -22,7 +34,7 @@ testeArbo = ArboRec[- particaoArbo$Resample1,]
 
 ##Análise de NaiveBayes
 
-arboNaiveBayes = naiveBayes(tp_classificacao_final ~  notificacao_ano + co_distrito_residencia + tp_raca_cor + tp_zona_residencia, treinoArbo)
+arboNaiveBayes = naiveBayes(tp_classificacao_final ~  notificacao_ano + ds_semana_notificacao + no_bairro_residencia + co_distrito_residencia + tp_sexo + tp_raca_cor + tp_escolaridade + tp_zona_residencia + tp_result_exame, treinoArbo)
 
 arboNaiveBayes
 
@@ -50,7 +62,7 @@ rpart.plot(arboRpart)
 plotcp(arboRpart) 
 
 # podar árvore
-arboRpart <- prune(arboRpart, cp=0.048) 
+arboRpart <- prune(arboRpart, cp=0.041) 
 
 # plotar árvore podada
 rpart.plot(arboRpart, extra = 104, branch.lty = 2,
