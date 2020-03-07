@@ -1,6 +1,6 @@
 ---
-title: "ArboRec Serv"
-author: "BVPN"
+title: "Atividade R - ArboRec"
+author: "Grupo SADIKS"
 date: "29/02/2020"
 output: html_document
 ---
@@ -81,11 +81,12 @@ save(arboRpart, file="arboRpart.Rdata")
 
 ```
 
-## Indicadores Gerais
+## Resultados Preliminares
+Utilizamos o algoritmo de *Naive Bayes* que consiste em encontrar uma probabilidade a posteriori, multiplicando a probabilidade a pela probabilidade de “receber um resultado positivo, dado que tem a doença”, neste caso utilizando resultados em cima das arboviroses encontradas em nossas bases de dados.
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+Além disso, uma árvore de decisão foi utilizada como ferramenta de suporte à tomada de decisão, onde através de um gráfico no formato de árvore que demonstra visualmente as condições e as probabilidades para se chegar a resultados.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+Desta forma, apresentamos os dados a seguir:
 
 ```{r , include=TRUE}
 
