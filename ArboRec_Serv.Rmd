@@ -88,6 +88,8 @@ Além disso, uma árvore de decisão foi utilizada como ferramenta de suporte à
 
 Desta forma, apresentamos os dados a seguir:
 
+<iframe width="1024" height="768" src="https://app.powerbi.com/reportEmbed?reportId=94c158d5-581d-47c6-b5a4-4aa6892bf7a5&autoAuth=true&ctid=e47f850b-d3ec-4764-bd9e-c6675f146ba0&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLWJyYXppbC1zb3V0aC1iLXByaW1hcnktcmVkaXJlY3QuYW5hbHlzaXMud2luZG93cy5uZXQvIn0%3D" frameborder="0" allowFullScreen="true"></iframe>
+
 ```{r , include=TRUE}
 
 plot(ArboRec$tp_classificacao_final)
