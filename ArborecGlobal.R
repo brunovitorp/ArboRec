@@ -51,38 +51,38 @@ save(arboNaiveBayes, file="arboNaiveBayesModel.Rdata")
 
 ### Criação de Arvore de Decisão ### 31 Bairros inviabiliza o uso de árvore
 
-arboAtree <- ctree(tp_classificacao_final ~ ., treinoArbo)
-
-plot(arboAtree, type="simple", gp = gpar(fontsize = 5))
-
-previsaoCtreeArbo = predict(arboAtree, testeArbo)
-previsaoCtreeArbo = as.data.frame(previsaoCtreeArbo)
-
-confusionMatrix(previsaoCtreeArbo$previsaoCtreeArbo, testeArbo$tp_classificacao_final)
-
-save(arboAtree, file="ctreeModel.Rdata")
-
-# Árvores de Entropia
-arboRpart <- rpart(tp_classificacao_final ~ notificacao_ano + co_distrito_residencia + tp_raca_cor + tp_escolaridade + tp_zona_residencia, treinoArbo) # criar árvore
-rpart.plot(arboRpart)
-
-# plotar entropia da árvore - nível de complexidade para arvore acima (evolução)
-plotcp(arboRpart) 
-
-# podar árvore
-arboRpart <- prune(arboRpart, cp=0.041) 
-
-# plotar árvore podada
-rpart.plot(arboRpart, extra = 104, branch.lty = 2,
-           nn= T, tweak = 1.2)
-
-# realizar predição
-previsaoPartArbo = predict(arboRpart, testeArbo, type = "class")
-
-# transformar predições em data frame
-previsaoPartArbo = as.data.frame(previsaoPartArbo)
-
-# Matriz de confusão
-confusionMatrix(previsaoPartArbo$previsaoPartArbo, testeArbo$tp_classificacao_final)
+# arboatree <- ctree(tp_classificacao_final ~ ., treinoarbo)
+# 
+# plot(arboatree, type="simple", gp = gpar(fontsize = 5))
+# 
+# previsaoctreearbo = predict(arboatree, testearbo)
+# previsaoctreearbo = as.data.frame(previsaoctreearbo)
+# 
+# confusionMatrix(previsaoCtreeArbo$previsaoCtreeArbo, testeArbo$tp_classificacao_final)
+# 
+# save(arboAtree, file="ctreeModel.Rdata")
+# 
+# # Árvores de Entropia
+# arboRpart <- rpart(tp_classificacao_final ~ notificacao_ano + co_distrito_residencia + tp_raca_cor + tp_escolaridade + tp_zona_residencia, treinoArbo) # criar árvore
+# rpart.plot(arboRpart)
+# 
+# # plotar entropia da árvore - nível de complexidade para arvore acima (evolução)
+# plotcp(arboRpart) 
+# 
+# # podar árvore
+# arboRpart <- prune(arboRpart, cp=0.041) 
+# 
+# # plotar árvore podada
+# rpart.plot(arboRpart, extra = 104, branch.lty = 2,
+#            nn= T, tweak = 1.2)
+# 
+# # realizar predição
+# previsaoPartArbo = predict(arboRpart, testeArbo, type = "class")
+# 
+# # transformar predições em data frame
+# previsaoPartArbo = as.data.frame(previsaoPartArbo)
+# 
+# # Matriz de confusão
+# confusionMatrix(previsaoPartArbo$previsaoPartArbo, testeArbo$tp_classificacao_final)
 
 save(arboRpart, file="arboRpart.Rdata")
