@@ -47,6 +47,7 @@ arboNaiveBayes
 previsaoArbo = predict(arboNaiveBayes, testeArbo) 
 confusionMatrix(previsaoArbo, testeArbo$tp_classificacao_final)
 
+save(arboNaiveBayes, file="arboNaiveBayesModel.Rdata")
 
 ### Criação de Arvore de Decisão ### 31 Bairros inviabiliza o uso de árvore
 
