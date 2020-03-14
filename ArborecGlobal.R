@@ -39,7 +39,7 @@ particaoArbo = createDataPartition(1:nrow(ArboRecFinal), p=.7)
 treinoArbo = ArboRecFinal[particaoArbo$Resample1,] 
 testeArbo = ArboRecFinal[- particaoArbo$Resample1,] 
 
-##Análise de NaiveBayes
+### Análise de NaiveBayes ### 
 
 arboNaiveBayes = naiveBayes(tp_classificacao_final ~., treinoArbo)
 arboNaiveBayes
@@ -47,7 +47,7 @@ arboNaiveBayes
 previsaoArbo = predict(arboNaiveBayes, testeArbo) 
 confusionMatrix(previsaoArbo, testeArbo$tp_classificacao_final)
 
-### Adaboost ####
+### Adaboost ### Demorou muito!
 
 adabagArbo <- boosting(tp_classificacao_final ~ ., data=treinoArbo, boos=TRUE, mfinal=20, coeflearn='Breiman')
 plot(errorevol(adabagArbo,treinoArbo))
@@ -56,7 +56,7 @@ previsaoArbo = predict(adabagArbo, testeArbo) # criar predição
 confusionMatrix(as.factor(previsaoArbo$class), testeArbo$tp_classificacao_final) # matriz de confusão
 
 
-##Criação de Arvore de Decisão
+### Criação de Arvore de Decisão ### 
 
 arboAtree <- ctree(tp_classificacao_final ~ notificacao_ano + co_distrito_residencia + tp_result_exame, treinoArbo)
 
