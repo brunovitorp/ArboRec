@@ -47,18 +47,10 @@ arboNaiveBayes
 previsaoArbo = predict(arboNaiveBayes, testeArbo) 
 confusionMatrix(previsaoArbo, testeArbo$tp_classificacao_final)
 
-### Adaboost ### Demorou muito!
 
-adabagArbo <- boosting(tp_classificacao_final ~ ., data=treinoArbo, boos=TRUE, mfinal=20, coeflearn='Breiman')
-plot(errorevol(adabagArbo,treinoArbo))
+### Criação de Arvore de Decisão ### 31 Bairros inviabiliza o uso de árvore
 
-previsaoArbo = predict(adabagArbo, testeArbo) # criar predição
-confusionMatrix(as.factor(previsaoArbo$class), testeArbo$tp_classificacao_final) # matriz de confusão
-
-
-### Criação de Arvore de Decisão ### 
-
-arboAtree <- ctree(tp_classificacao_final ~ notificacao_ano + co_distrito_residencia + tp_result_exame, treinoArbo)
+arboAtree <- ctree(tp_classificacao_final ~ ., treinoArbo)
 
 plot(arboAtree, type="simple", gp = gpar(fontsize = 5))
 
