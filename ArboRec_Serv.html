@@ -393,37 +393,38 @@ summary {
 <li>Zona Residêncial</li>
 <li>Resultado do exame realizado quanto à classificação da arbovirose</li>
 </ol>
-<pre class="r"><code>confusionMatrix(previsaoArbo, testeArbo$tp_classificacao_final)</code></pre>
+<pre class="r"><code>previsaoArbo = predict(arboNaiveBayes, testeArbo)
+confusionMatrix(previsaoArbo, testeArbo$tp_classificacao_final)</code></pre>
 <pre><code>## Confusion Matrix and Statistics
 ## 
 ##               Reference
 ## Prediction     Dengue Descartado Inconclusivo
-##   Dengue         2092        118           42
-##   Descartado     1182       1686          458
-##   Inconclusivo    499        172          419
+##   Dengue         2079        115           55
+##   Descartado     1188       1672          489
+##   Inconclusivo    472        152          446
 ## 
 ## Overall Statistics
 ##                                          
 ##                Accuracy : 0.6294         
 ##                  95% CI : (0.6177, 0.641)
-##     No Information Rate : 0.5658         
+##     No Information Rate : 0.5607         
 ##     P-Value [Acc &gt; NIR] : &lt; 2.2e-16      
 ##                                          
-##                   Kappa : 0.4197         
+##                   Kappa : 0.4219         
 ##                                          
 ##  Mcnemar&#39;s Test P-Value : &lt; 2.2e-16      
 ## 
 ## Statistics by Class:
 ## 
 ##                      Class: Dengue Class: Descartado Class: Inconclusivo
-## Sensitivity                 0.5545            0.8532             0.45593
-## Specificity                 0.9447            0.6505             0.88328
-## Pos Pred Value              0.9290            0.5069             0.38440
-## Neg Pred Value              0.6193            0.9132             0.91036
-## Prevalence                  0.5658            0.2963             0.13782
-## Detection Rate              0.3137            0.2528             0.06284
-## Detection Prevalence        0.3377            0.4988             0.16347
-## Balanced Accuracy           0.7496            0.7519             0.66961</code></pre>
+## Sensitivity                 0.5560            0.8623             0.45051
+## Specificity                 0.9420            0.6454             0.89010
+## Pos Pred Value              0.9244            0.4993             0.41682
+## Neg Pred Value              0.6243            0.9196             0.90282
+## Prevalence                  0.5607            0.2908             0.14847
+## Detection Rate              0.3118            0.2507             0.06689
+## Detection Prevalence        0.3373            0.5022             0.16047
+## Balanced Accuracy           0.7490            0.7538             0.67030</code></pre>
 <p>Desta forma, recomenda-se que seja realizado um novo estudo para realizar os cuidados paleativos para evitar a grande quantidade de incidentes relacionados a arboviroses.</p>
 </div>
 
