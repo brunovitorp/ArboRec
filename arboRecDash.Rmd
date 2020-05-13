@@ -1,15 +1,15 @@
 ---
-title: "Multiple Pages"
+title: "ArboRec 2020"
 output: flexdashboard::flex_dashboard
 ---
 
-Page 1
+Indicadores Gerais {data-orientation=rows}
 =====================================  
     
 Column {data-width=600}
 -------------------------------------
     
-### Chart 1
+### Por data
     
 ```{r}
 ```
@@ -17,23 +17,23 @@ Column {data-width=600}
 Column {data-width=400}
 -------------------------------------
    
-### Chart 2
+### Por cidade
 
 ```{r}
 ```   
  
-### Chart 3
+### Por gênero
     
 ```{r}
 ```
 
-Page 2 {data-orientation=rows}
+Prospecções {data-orientation=rows}
 =====================================     
    
 Row {data-height=600}
 -------------------------------------
 
-### Chart 1
+### Matriz de Confusão
 
 ```{r}
 ```
@@ -41,7 +41,7 @@ Row {data-height=600}
 Row {data-height=400}
 -------------------------------------
    
-### Chart 2
+### Por Caso
 
 ```{r}
 ```   
