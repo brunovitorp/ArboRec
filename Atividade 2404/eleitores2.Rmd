@@ -1,0 +1,132 @@
+---
+title: "Eleitores2"
+runtime: shiny
+output:
+  html_document:
+    df_print: paged
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    theme: default
+    vertical_layout: scroll
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+source('./global.R') # carrega o arquivo global, com bibliotecas e ETL
+
+```
+
+Votantes {data-icon="fa-chart-bar"}
+===================================== 
+
+Column {.sidebar data-width=140} 
+-------------------------------------
+
+```{r votantes controles}
+selectizeInput('uf', 'UF', choices = (c('BR', sort(as.character(unique(eleitores$UF))))), selected = 'BR')
+```
+
+### Ultima atualizacao
+
+```{r ultima atualizacao}
+valueBox(Sys.time())
+```
+
+Row {data-height=100}
+-------------------------------------
+
+### Votantes
+
+```{r votantes box}
+renderValueBox({
+  
+  if(input$uf == "BR") {
+  x <- eleitores %>% filter(Situacao == 'votante') %>% count()
+  }
+  
+  else{
+  x <- eleitores %>% filter(Situacao == 'votante' & UF == input$uf) %>% count()
+  }
+  
+  valueBox(x)
+})
+```
+
+### Ausentes
+
+```{r ausentes box}
+renderValueBox({
+  
+  if(input$uf == "BR") {
+  x <- eleitores %>% filter(Situacao == 'ausente') %>% count()
+  }
+  
+  else{
+  x <- eleitores %>% filter(Situacao == 'ausente' & UF == input$uf) %>% count()
+  }
+  
+  valueBox(x)
+})
+```
+
+Row {.tabset .tabset-fade}
+-------------------------------------
+
+### Comparativo
+
+```{r comparativo}
+renderPlotly({
+
+  x <- eleitores %>% filter(Situacao == 'votante') %>% count(UF)
+  y <- eleitores %>% filter(Situacao == 'ausente') %>% count(UF)
+  z <- merge(x, y, by = 'UF')
+
+  plot_ly(data = z) %>%
+  add_trace(
+    x = ~UF,
+    y = ~n.x,
+    type = 'bar', 
+    textposition = 'outside',
+    name = "Votantes",
+    line = list(color = "blue"),
+    marker = list(color = "blue")
+  ) %>% add_trace(
+    x = ~UF,
+    y = ~n.y,
+    type = 'bar', 
+    textposition = 'outside',
+    name = "Ausentes",
+    line = list(color = "red"),
+    marker = list(color = "red")
+  ) %>%
+  layout(
+    title = "Votantes x Ausentes",
+    yaxis = list(title = "Total de Pessoas"),
+    xaxis = list(title = "UF"),
+    legend = list(x = 0.1, y = 0.9)
+  )
+})
+```
+
+Cubo de Dados {data-icon="fa-cube"}
+=====================================
+
+Controles {.sidebar}
+-------------------------------------
+
+```{r cubo controles}
+checkboxGroupInput("show_vars", "Colunas da tabela:", names(eleitores), selected = 'UF')
+```
+
+Row {.tabset data-height=500}
+-------------------------------------
+
+```{r cubo de dados}
+renderDataTable({
+
+  x <- eleitores %>% group_by(!!!rlang::syms(input$show_vars)) %>% count()
+
+  datatable(x, extensions = c('Buttons', 'ColReorder', 'Scroller'), class = 'cell-border stripe compact', options = list(deferRender = TRUE, scrollY = 500, scroller = TRUE, colReorder = TRUE, dom = 'Brtip', buttons = c('csv', 'excel')))
+  })
+```

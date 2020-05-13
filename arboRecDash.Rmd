@@ -1,52 +1,31 @@
 ---
-title: "ArboRec 2020"
+title: "Sidebar"
 output: flexdashboard::flex_dashboard
+orientation: rows
 ---
 
-Indicadores Gerais {data-orientation=rows}
-=====================================  
-    
-Column {data-width=600}
+Inputs {.sidebar}
+====================================
+
+```{r}
+# shiny inputs defined here
+```
+
+Pagina 01
+====================================
+
+
+Linha 01
 -------------------------------------
     
-### Por data
+### Chart 1
     
 ```{r}
 ```
-   
-Column {data-width=400}
+Linha 02 {.tabset .tabset-fade}
 -------------------------------------
-   
-### Por cidade
-
-```{r}
-```   
- 
-### Por gênero
-    
-```{r}
-```
-
-Prospecções {data-orientation=rows}
-=====================================     
-   
-Row {data-height=600}
--------------------------------------
-
-### Matriz de Confusão
+### Chart 2
 
 ```{r}
 ```
-
-Row {data-height=400}
--------------------------------------
-   
-### Por Caso
-
-```{r}
-```   
-    
 ### Chart 3
-
-```{r}
-```
