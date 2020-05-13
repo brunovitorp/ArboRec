@@ -372,7 +372,7 @@ summary {
 <div id="resultados-preliminares" class="section level2">
 <h2>Resultados Preliminares</h2>
 <p>Inicialmente, é possível identificar neste painel abaixo que existe uma grande quantidade de notificações nos últimos anos relatados, tendo como informação relevante, o ano de <em>2016</em> no bairro da <em>Várzea</em>.</p>
-<iframe width="800" height="600" src="https://app.powerbi.com/reportEmbed?reportId=94c158d5-581d-47c6-b5a4-4aa6892bf7a5&amp;autoAuth=true&amp;ctid=e47f850b-d3ec-4764-bd9e-c6675f146ba0&amp;config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLWJyYXppbC1zb3V0aC1iLXByaW1hcnktcmVkaXJlY3QuYW5hbHlzaXMud2luZG93cy5uZXQvIn0%3D" frameborder="0" allowFullScreen="true">
+<iframe width="680" height="510" src="https://app.powerbi.com/view?r=eyJrIjoiNzhhNDAxZjktYjFlOS00YzE2LWJhZTktODE5YjkwNjU1OWYxIiwidCI6IjA5NWY4NjAxLTRhOWEtNDQ5MC1hODBkLWJmMTA4NTliODkxMCJ9" frameborder="0" allowFullScreen="true">
 </iframe>
 <p>Também utilizamos o algoritmo de <em>Naive Bayes</em> que consiste em encontrar uma probabilidade a posteriori.</p>
 <p>Desta forma, apresentamos a seguinte classificação:</p>
@@ -393,38 +393,37 @@ summary {
 <li>Zona Residêncial</li>
 <li>Resultado do exame realizado quanto à classificação da arbovirose</li>
 </ol>
-<pre class="r"><code>previsaoArbo = predict(arboNaiveBayes, testeArbo)
-confusionMatrix(previsaoArbo, testeArbo$tp_classificacao_final)</code></pre>
+<pre class="r"><code>confusionMatrix(previsaoArbo, testeArbo$tp_classificacao_final)</code></pre>
 <pre><code>## Confusion Matrix and Statistics
 ## 
 ##               Reference
 ## Prediction     Dengue Descartado Inconclusivo
-##   Dengue         2079        115           55
-##   Descartado     1188       1672          489
-##   Inconclusivo    472        152          446
+##   Dengue         2044        106           53
+##   Descartado     1229       1648          450
+##   Inconclusivo    491        206          441
 ## 
 ## Overall Statistics
 ##                                          
-##                Accuracy : 0.6294         
-##                  95% CI : (0.6177, 0.641)
-##     No Information Rate : 0.5607         
+##                Accuracy : 0.6198         
+##                  95% CI : (0.608, 0.6315)
+##     No Information Rate : 0.5645         
 ##     P-Value [Acc &gt; NIR] : &lt; 2.2e-16      
 ##                                          
-##                   Kappa : 0.4219         
+##                   Kappa : 0.4085         
 ##                                          
 ##  Mcnemar&#39;s Test P-Value : &lt; 2.2e-16      
 ## 
 ## Statistics by Class:
 ## 
 ##                      Class: Dengue Class: Descartado Class: Inconclusivo
-## Sensitivity                 0.5560            0.8623             0.45051
-## Specificity                 0.9420            0.6454             0.89010
-## Pos Pred Value              0.9244            0.4993             0.41682
-## Neg Pred Value              0.6243            0.9196             0.90282
-## Prevalence                  0.5607            0.2908             0.14847
-## Detection Rate              0.3118            0.2507             0.06689
-## Detection Prevalence        0.3373            0.5022             0.16047
-## Balanced Accuracy           0.7490            0.7538             0.67030</code></pre>
+## Sensitivity                 0.5430            0.8408             0.46716
+## Specificity                 0.9452            0.6434             0.87823
+## Pos Pred Value              0.9278            0.4953             0.38752
+## Neg Pred Value              0.6148            0.9066             0.90904
+## Prevalence                  0.5645            0.2939             0.14157
+## Detection Rate              0.3065            0.2472             0.06614
+## Detection Prevalence        0.3304            0.4990             0.17067
+## Balanced Accuracy           0.7441            0.7421             0.67270</code></pre>
 <p>Desta forma, recomenda-se que seja realizado um novo estudo para realizar os cuidados paleativos para evitar a grande quantidade de incidentes relacionados a arboviroses.</p>
 </div>
 

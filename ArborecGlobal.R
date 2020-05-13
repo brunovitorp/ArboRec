@@ -86,3 +86,4 @@ save(arboNaiveBayes, file="arboNaiveBayesModel.Rdata")
 # confusionMatrix(previsaoPartArbo$previsaoPartArbo, testeArbo$tp_classificacao_final)
 
 save(arboRpart, file="arboRpart.Rdata")
+
