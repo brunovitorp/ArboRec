@@ -1,8 +1,25 @@
+##GERAIS
+library(dplyr) # comandos pip
+library(DT) # tabelas dinâmicas
+library(flexdashboard) # dashboard
+library(formattable) # formatações
+library(gplots) # gráficos
+library(lubridate) # datas
+library(plotly) # gráficos
+library(ggplot2) # gráficos
+library(reshape2) # transformação de dados
+library(data.table) # leitura de tabelas
+###ML
+library(bnlearn)
+library(caret)
+library(C50)
+library(data.table)
+library(e1071)
+library(pROC)
+library(randomForest)
+library(rpart)
 library(readr)
 library(bnlearn)
-library(e1071)
-library(caret)
-require(rpart)
 require(rpart.plot)
 require(party)
 require(partykit)
@@ -32,7 +49,7 @@ ArboRec$tp_result_exame <- as.factor(ArboRec$tp_result_exame)
 ArboRecFinal <- ArboRec[, c(14:17, 21, 23, 26, 57, 68, 74)]
 
 #table(ArboRecFinal$tp_result_exame)
-plot(ArboRecFinal$tp_classificacao_final)
+# plot(ArboRecFinal$tp_classificacao_final)
 
 #Criação da base de treinamento e de teste
 particaoArbo = createDataPartition(1:nrow(ArboRecFinal), p=.7) 
@@ -41,13 +58,13 @@ testeArbo = ArboRecFinal[- particaoArbo$Resample1,]
 
 ### Análise de NaiveBayes ### 
 
-arboNaiveBayes = naiveBayes(tp_classificacao_final ~., treinoArbo)
-arboNaiveBayes
+# arboNaiveBayes = naiveBayes(tp_classificacao_final ~., treinoArbo)
+# arboNaiveBayes
 
-previsaoArbo = predict(arboNaiveBayes, testeArbo) 
-confusionMatrix(previsaoArbo, testeArbo$tp_classificacao_final)
+# previsaoArbo = predict(arboNaiveBayes, testeArbo) 
+# confusionMatrix(previsaoArbo, testeArbo$tp_classificacao_final)
 
-save(arboNaiveBayes, file="arboNaiveBayesModel.Rdata")
+# save(arboNaiveBayes, file="arboNaiveBayesModel.Rdata")
 
 ### Criação de Arvore de Decisão ### 31 Bairros inviabiliza o uso de árvore
 
@@ -85,5 +102,5 @@ save(arboNaiveBayes, file="arboNaiveBayesModel.Rdata")
 # # Matriz de confusão
 # confusionMatrix(previsaoPartArbo$previsaoPartArbo, testeArbo$tp_classificacao_final)
 
-save(arboRpart, file="arboRpart.Rdata")
+# save(arboRpart, file="arboRpart.Rdata")
 

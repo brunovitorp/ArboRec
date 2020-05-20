@@ -1,8 +1,19 @@
 ---
-title: "Sidebar"
-output: flexdashboard::flex_dashboard
-orientation: rows
+title: "ArboRec"
+output:
+   flexdashboard::flex_dashboard:
+    orientation: rows
+    vertical_layout: scroll
+    theme: default
+runtime: shiny
 ---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+# carrega o arquivo global, com bibliotecas e ETL
+source('./ArborecGlobal.R') 
+```
 
 Inputs {.sidebar}
 ====================================
@@ -22,10 +33,15 @@ Linha 01
     
 ```{r}
 ```
-Linha 02 {.tabset .tabset-fade}
--------------------------------------
+
 ### Chart 2
 
 ```{r}
 ```
 ### Chart 3
+
+```{r}
+```
+
+Pagina 02
+====================================
