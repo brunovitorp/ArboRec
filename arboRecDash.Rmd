@@ -25,11 +25,11 @@ Esse é um dashboard das ocorrências de Arboviroses da cidade do __Recife - PE_
 
 __Autores:__
 
-* Bruno Pires
+* Bruno Vitor
 * Danilo Farias
-* George viturino
+* George Viturino
 * Luiz Carlos
-* Patricia
+* Patrícia Moura
 * Thiago Brito
 
 
@@ -140,9 +140,19 @@ renderPlotly({
 ```
 
 ### Dados Demograficos e Sociais
-    
+
 ```{r}
+a <- ArboRecFinal %>% filter(ClassificacaoFinal == 'Dengue') %>% count(Ano)
+s <- ArboRecFinal %>% filter(ClassificacaoFinal == 'Dengue') %>% count(Sexo)
+
+fig <- plot_ly()
+fig <- fig %>% add_pie(data = a, labels = ~Ano , values = ~n, name = "Ano", domain = list(row = 0, column = 0))
+fig <- fig %>% add_pie(data = s, labels = ~Sexo , values = ~n, name = "Sexo", domain = list(row = 0, column = 1))
+fig <- fig %>% layout(title = "Casos Confirmados Por:", showlegend = F,
+                        grid=list(rows=1, columns=2))
+fig
 ```
+
 
 Cubo de Dados - Ocorrências de Arboviroses{data-icon="fa-table"}
 ====================================

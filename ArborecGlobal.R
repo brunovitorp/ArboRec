@@ -49,6 +49,9 @@ ArboRec$tp_zona_residencia = ifelse(ArboRec$tp_zona_residencia == 1, 'Urbano', i
 # Transformando o tp_autoctone_residencia em dados descritivos
 ArboRec$tp_autoctone_residencia = ifelse(ArboRec$tp_autoctone_residencia == 1, 'Sim', ifelse(ArboRec$tp_autoctone_residencia == 2, 'Não', 'Indeterminado'))
 
+# Transformando o tp_sexo em dados descritivos
+ArboRec$tp_sexo = ifelse(ArboRec$tp_sexo == 'F', 'Feminino', ifelse(ArboRec$tp_sexo == 'M', 'Masculino', 'Indeterminado'))
+
 #Modificando os tipos de dados para Factor
 ArboRec$tp_classificacao_final <- as.factor(ArboRec$tp_classificacao_final)
 ArboRec$ds_semana_notificacao <- as.factor(ArboRec$ds_semana_notificacao)
@@ -72,6 +75,7 @@ colnames(ArboRecFinal) <- c('Semana', 'Ano', 'Sexo', 'SeGestante', 'Raca', 'Esco
 
 #Analisando os dados
 table(ArboRecFinal$ClassificacaoFinal, exclude = NULL)
+table(ArboRecFinal$Sexo, exclude = NULL)
 plot(ArboRecFinal$ClassificacaoFinal)
 
 #Criação da base de treinamento e de teste
