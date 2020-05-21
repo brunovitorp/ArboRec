@@ -14,34 +14,156 @@ knitr::opts_chunk$set(echo = FALSE)
 # carrega o arquivo global, com bibliotecas e ETL
 source('./ArborecGlobal.R') 
 ```
-
-Inputs {.sidebar}
+BI - Ocorrências de Arboviroses {data-icon="fa-chart-pie"}
 ====================================
+
+Column {.sidebar data-width=220} 
+-----------------------------------------------------------------------
+__Dashboard de Ocorências de Aboviroses__
+
+Esse é um dashboard das ocorrências de Arboviroses da cidade do __Recife - PE__. Foram coletados na [Central de Dados Abertos do Recife](http://dados.recife.pe.gov.br/dataset/casos-de-dengue-zika-e-chikungunya), os dados de ocorência de Arboviroses dos anos de 2016, 2017 e 2018.
+
+__Autores:__
+
+* Bruno Pires
+* Danilo Farias
+* George viturino
+* Luiz Carlos
+* Patricia
+* Thiago Brito
+
+
+Row
+-----------------------------------------------------------------------
+
+### Casos Confirmados
 
 ```{r}
-# shiny inputs defined here
+confirmados <- ArboRecFinal %>% filter(ClassificacaoFinal == 'Dengue') %>% count()
+valueBox(confirmados, icon = "fa-check-circle", color = "#47d65f")
+
 ```
 
-BI - Arboviroses {data-icon="fa-chart-pie"}
-====================================
+### Casos Descartados
+
+```{r}
+descartados <- ArboRecFinal %>% filter(ClassificacaoFinal == 'Descartado') %>% count()
+valueBox(descartados, icon = "fa-trash", color = "#f57878")
+```
+
+### Casos Inconclusivos
+
+```{r}
+inconclusivo <- ArboRecFinal %>% filter(ClassificacaoFinal == 'Inconclusivo') %>% count()
+valueBox(inconclusivo, 
+         icon = "fa-question-circle",
+         color = ifelse(inconclusivo > 1000, "warning", "primary"))
+```
+
 
 Row {.tabset .tabset-fade}
 -------------------------------------
    
-### Ocorrências de Arboviroses
+### Bairros
 
 ```{r}
+renderPlotly({
+
+  x <- ArboRecFinal %>% filter(ClassificacaoFinal == 'Dengue') %>% count(Bairro)
+  y <- ArboRecFinal %>% filter(ClassificacaoFinal == 'Descartado') %>% count(Bairro)
+  z <- merge(x, y, by = 'Bairro')
+
+  plot_ly(data = z) %>%
+  add_trace(
+    x = ~Bairro,
+    y = ~n.x,
+    type = 'bar', 
+    textposition = 'outside',
+    name = "Confirmados",
+    line = list(color = "green"),
+    marker = list(color = "green")
+  ) %>% add_trace(
+    x = ~Bairro,
+    y = ~n.y,
+    type = 'bar', 
+    textposition = 'outside',
+    name = "Descartado",
+    line = list(color = "red"),
+    marker = list(color = "red")
+  ) %>%
+  layout(
+    title = "Ocorências de Dengue X Bairro",
+    yaxis = list(title = "Total de Ocorrências"),
+    xaxis = list(title = "Bairro"),
+    legend = list(x = 0.1, y = 0.9)
+  )
+})
+
 ```   
  
-### Chart 2
+### Distritos Sanitários
+    
+```{r}
+renderPlotly({
+
+  x <- ArboRecFinal %>% filter(ClassificacaoFinal == 'Dengue') %>% count(DistritoSanitario)
+  y <- ArboRecFinal %>% filter(ClassificacaoFinal == 'Descartado') %>% count(DistritoSanitario)
+  z <- merge(x, y, by = 'DistritoSanitario')
+
+  plot_ly(data = z) %>%
+  add_trace(
+    x = ~DistritoSanitario,
+    y = ~n.x,
+    type = 'bar', 
+    textposition = 'outside',
+    name = "Confirmados",
+    line = list(color = "green"),
+    marker = list(color = "green")
+  ) %>% add_trace(
+    x = ~DistritoSanitario,
+    y = ~n.y,
+    type = 'bar', 
+    textposition = 'outside',
+    name = "Descartado",
+    line = list(color = "red"),
+    marker = list(color = "red")
+  ) %>%
+  layout(
+    title = "Ocorências de Dengue X Distrito Sanitário",
+    yaxis = list(title = "Total de Ocorrências"),
+    xaxis = list(title = "Distrito Sanitário"),
+    legend = list(x = 0.1, y = 0.9)
+  )
+})
+
+
+```
+
+### Dados Demograficos e Sociais
     
 ```{r}
 ```
 
-### Chart 3
-    
-```{r}
-```
-
-Cubo de Dados - Arboviroses{data-icon="fa-table"}
+Cubo de Dados - Ocorrências de Arboviroses{data-icon="fa-table"}
 ====================================
+
+Controles {.sidebar}
+-------------------------------------
+__Cubo de Dados__
+
+Esse é um cubo de dados das ocorrências confirmadas de __Arboviroses__ na cidade __Recife-PE__.
+
+```{r cubo controles}
+checkboxGroupInput("show_vars", "Colunas da tabela:", names(ArboRecFinal), selected = 'Bairro')
+```
+
+Row {.tabset data-height=500}
+-------------------------------------
+```{r cubo de dados}
+renderDataTable({
+
+  x <- ArboRecFinal %>% group_by(!!!rlang::syms(input$show_vars)) %>% filter(ClassificacaoFinal == 'Dengue') %>% count()
+
+  datatable(x, extensions = c('Buttons', 'ColReorder', 'Scroller'), class = 'cell-border stripe compact', options = list(deferRender = TRUE, scrollY = 500, scroller = TRUE, colReorder = TRUE, dom = 'Brtip', buttons = c('csv', 'excel')))
+  })
+```

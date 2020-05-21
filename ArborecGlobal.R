@@ -41,7 +41,7 @@ ArboRec$tp_gestante = ifelse(ArboRec$tp_gestante == 1, '1º Trimestre', ifelse(A
 ArboRec$tp_raca_cor = ifelse(ArboRec$tp_raca_cor == 1, 'Branca', ifelse(ArboRec$tp_raca_cor == 2, 'Preta', ifelse(ArboRec$tp_raca_cor == 3, 'Amarela', ifelse(ArboRec$tp_raca_cor == 4, 'Parda', ifelse(ArboRec$tp_raca_cor == 5, 'Indígena', ifelse(is.null(ArboRec$tp_raca_cor), 'Ignorado', 'Ignorado'))))))
 
 # Transformando o co_distrito_residencia em dados descritivos
-ArboRec$co_distrito_residencia = ifelse(ArboRec$co_distrito_residencia == 117, 'CENTRO EXPANDIDO', ifelse(ArboRec$co_distrito_residencia == 118, 'INCRUZILHADA-BEBERIBE', ifelse(ArboRec$co_distrito_residencia == 119, 'CASA AMARELA - DOIS IRMAOS',ifelse(ArboRec$co_distrito_residencia == 120, 'CAXANGA - VARZEA',ifelse(ArboRec$co_distrito_residencia == 121, 'AFOGADOS - TEJIPIO',ifelse(ArboRec$co_distrito_residencia == 122, 'IBURA - BOA VIAGEM',ifelse(ArboRec$co_distrito_residencia == 546, 'MACAXEIRA - VASCO DA GAMA','TORRE - CASAFORTE')))))))
+ArboRec$co_distrito_residencia = ifelse(ArboRec$co_distrito_residencia == 117, 'CENTRO EXPANDIDO', ifelse(ArboRec$co_distrito_residencia == 118, 'INCRUZILHADA-BEBERIBE', ifelse(ArboRec$co_distrito_residencia == 119, 'CASA AMARELA - DOIS IRMAOS',ifelse(ArboRec$co_distrito_residencia == 120, 'CAXANGA - VARZEA',ifelse(ArboRec$co_distrito_residencia == 121, 'AFOGADOS - TEJIPIO',ifelse(ArboRec$co_distrito_residencia == 122, 'IBURA - BOA VIAGEM',ifelse(ArboRec$co_distrito_residencia == 546, 'MACAXEIRA - VASCO DA GAMA','COHAB - JORDAO')))))))
 
 # Transformando o tp_zona_residencia em dados descritivos
 ArboRec$tp_zona_residencia = ifelse(ArboRec$tp_zona_residencia == 1, 'Urbano', ifelse(ArboRec$tp_zona_residencia == 2, 'Rural', ifelse(ArboRec$tp_zona_residencia == 3, 'Periurbano','Ignorado')))
@@ -67,25 +67,12 @@ ArboRec$tp_autoctone_residencia <- as.factor(ArboRec$tp_autoctone_residencia)
 ArboRecFinal <- ArboRec[, c(5,6, 14:17, 21, 23, 26, 57, 68, 74)]
 
 #Renomeando o nome das colunas da base final tratada - ArboRecFinal
-colnames(ArboRecFinal) <- c('Semana Ano', 'Ano', 'Sexo', 'Se Gestante', 'Raça', 'Escolaridade', 'Distríto Sanitário', 'Bairro', 'Zona Residencial', 'Resultado de Exame', 'Autóctone do Município', 'Classificação Final')
+colnames(ArboRecFinal) <- c('Semana', 'Ano', 'Sexo', 'SeGestante', 'Raca', 'Escolaridade', 'DistritoSanitario', 'Bairro', 'ZonaResidencial', 'ResultadoExame', 'AutoctoneMunicipio', 'ClassificacaoFinal')
 
 
 #Analisando os dados
-table(ArboRecFinal$tp_classificacao_final, exclude = NULL)
-table(ArboRecFinal$tp_gestante, exclude = NULL)
-table(ArboRecFinal$tp_raca_cor, exclude = NULL)
-table(ArboRecFinal$tp_escolaridade, exclude = NULL)
-table(ArboRecFinal$co_distrito_residencia, exclude = NULL)
-table(ArboRecFinal$no_bairro_residencia, exclude = NULL)
-table(ArboRecFinal$tp_zona_residencia, exclude = NULL)
-table(ArboRecFinal$tp_result_exame, exclude = NULL)
-table(ArboRecFinal$tp_autoctone_residencia, exclude = NULL)
-table(ArboRecFinal$ds_semana_notificacao, exclude = NULL)
-table(ArboRecFinal$notificacao_ano, exclude = NULL)
-
-
-# table(ArboRecFinal$tp_result_exame)
-# plot(ArboRecFinal$tp_classificacao_final)
+table(ArboRecFinal$ClassificacaoFinal, exclude = NULL)
+plot(ArboRecFinal$ClassificacaoFinal)
 
 #Criação da base de treinamento e de teste
 # particaoArbo = createDataPartition(1:nrow(ArboRecFinal), p=.7) 
