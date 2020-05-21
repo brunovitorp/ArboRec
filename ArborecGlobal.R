@@ -29,32 +29,68 @@ library(adabag)
 #Carga da base
 ArboRec <- read_delim("ArboRec.csv", ";", escape_double = FALSE, trim_ws = TRUE)
 
+## Transformando os dados
+
 # Transformando o tp_classificacao_final em: Descartado, Inconclusivo, Dengue
 ArboRec$tp_classificacao_final = ifelse(ArboRec$tp_classificacao_final == 5, 'Descartado', ifelse(ArboRec$tp_classificacao_final == 8, 'Inconclusivo', 'Dengue'))
-table(ArboRec$tp_classificacao_final)
+
+# Transformando o tp_gestante nos dados descritivos
+ArboRec$tp_gestante = ifelse(ArboRec$tp_gestante == 1, '1º Trimestre', ifelse(ArboRec$tp_gestante == 2, '2º Trimestre', ifelse(ArboRec$tp_gestante == 3, '3º Trimestre',ifelse(ArboRec$tp_gestante == 4, 'Idade gestacional ignorada',ifelse(ArboRec$tp_gestante == 6, 'Não se aplica - Homem', 'Não está Gravida')))))
+
+# Transformando o tp_raca_cor em dados descritivos
+ArboRec$tp_raca_cor = ifelse(ArboRec$tp_raca_cor == 1, 'Branca', ifelse(ArboRec$tp_raca_cor == 2, 'Preta', ifelse(ArboRec$tp_raca_cor == 3, 'Amarela', ifelse(ArboRec$tp_raca_cor == 4, 'Parda', ifelse(ArboRec$tp_raca_cor == 5, 'Indígena', ifelse(is.null(ArboRec$tp_raca_cor), 'Ignorado', 'Ignorado'))))))
+
+# Transformando o co_distrito_residencia em dados descritivos
+ArboRec$co_distrito_residencia = ifelse(ArboRec$co_distrito_residencia == 117, 'CENTRO EXPANDIDO', ifelse(ArboRec$co_distrito_residencia == 118, 'INCRUZILHADA-BEBERIBE', ifelse(ArboRec$co_distrito_residencia == 119, 'CASA AMARELA - DOIS IRMAOS',ifelse(ArboRec$co_distrito_residencia == 120, 'CAXANGA - VARZEA',ifelse(ArboRec$co_distrito_residencia == 121, 'AFOGADOS - TEJIPIO',ifelse(ArboRec$co_distrito_residencia == 122, 'IBURA - BOA VIAGEM',ifelse(ArboRec$co_distrito_residencia == 546, 'MACAXEIRA - VASCO DA GAMA','TORRE - CASAFORTE')))))))
+
+# Transformando o tp_zona_residencia em dados descritivos
+ArboRec$tp_zona_residencia = ifelse(ArboRec$tp_zona_residencia == 1, 'Urbano', ifelse(ArboRec$tp_zona_residencia == 2, 'Rural', ifelse(ArboRec$tp_zona_residencia == 3, 'Periurbano','Ignorado')))
+
+# Transformando o tp_autoctone_residencia em dados descritivos
+ArboRec$tp_autoctone_residencia = ifelse(ArboRec$tp_autoctone_residencia == 1, 'Sim', ifelse(ArboRec$tp_autoctone_residencia == 2, 'Não', 'Indeterminado'))
 
 #Modificando os tipos de dados para Factor
 ArboRec$tp_classificacao_final <- as.factor(ArboRec$tp_classificacao_final)
+ArboRec$ds_semana_notificacao <- as.factor(ArboRec$ds_semana_notificacao)
+ArboRec$notificacao_ano <- as.factor(ArboRec$notificacao_ano)
 ArboRec$co_distrito_residencia <- as.factor(ArboRec$co_distrito_residencia)
 ArboRec$tp_sexo <- as.factor(ArboRec$tp_sexo)
 ArboRec$tp_gestante <- as.factor(ArboRec$tp_gestante)
 ArboRec$tp_raca_cor <- as.factor(ArboRec$tp_raca_cor)
 ArboRec$tp_escolaridade <- as.factor(ArboRec$tp_escolaridade)
-ArboRec$co_distrito_residencia <- as.factor(ArboRec$co_distrito_residencia)
 ArboRec$no_bairro_residencia <- as.factor(ArboRec$no_bairro_residencia)
 ArboRec$tp_zona_residencia <- as.factor(ArboRec$tp_zona_residencia)
 ArboRec$tp_result_exame <- as.factor(ArboRec$tp_result_exame)
+ArboRec$tp_autoctone_residencia <- as.factor(ArboRec$tp_autoctone_residencia)
 
 #Recortando a base para apenas as colunas usadas para o modelo
-ArboRecFinal <- ArboRec[, c(14:17, 21, 23, 26, 57, 68, 74)]
+ArboRecFinal <- ArboRec[, c(5,6, 14:17, 21, 23, 26, 57, 68, 74)]
 
-#table(ArboRecFinal$tp_result_exame)
+#Renomeando o nome das colunas da base final tratada - ArboRecFinal
+colnames(ArboRecFinal) <- c('Semana Ano', 'Ano', 'Sexo', 'Se Gestante', 'Raça', 'Escolaridade', 'Distríto Sanitário', 'Bairro', 'Zona Residencial', 'Resultado de Exame', 'Autóctone do Município', 'Classificação Final')
+
+
+#Analisando os dados
+table(ArboRecFinal$tp_classificacao_final, exclude = NULL)
+table(ArboRecFinal$tp_gestante, exclude = NULL)
+table(ArboRecFinal$tp_raca_cor, exclude = NULL)
+table(ArboRecFinal$tp_escolaridade, exclude = NULL)
+table(ArboRecFinal$co_distrito_residencia, exclude = NULL)
+table(ArboRecFinal$no_bairro_residencia, exclude = NULL)
+table(ArboRecFinal$tp_zona_residencia, exclude = NULL)
+table(ArboRecFinal$tp_result_exame, exclude = NULL)
+table(ArboRecFinal$tp_autoctone_residencia, exclude = NULL)
+table(ArboRecFinal$ds_semana_notificacao, exclude = NULL)
+table(ArboRecFinal$notificacao_ano, exclude = NULL)
+
+
+# table(ArboRecFinal$tp_result_exame)
 # plot(ArboRecFinal$tp_classificacao_final)
 
 #Criação da base de treinamento e de teste
-particaoArbo = createDataPartition(1:nrow(ArboRecFinal), p=.7) 
-treinoArbo = ArboRecFinal[particaoArbo$Resample1,] 
-testeArbo = ArboRecFinal[- particaoArbo$Resample1,] 
+# particaoArbo = createDataPartition(1:nrow(ArboRecFinal), p=.7) 
+# treinoArbo = ArboRecFinal[particaoArbo$Resample1,] 
+# testeArbo = ArboRecFinal[- particaoArbo$Resample1,] 
 
 ### Análise de NaiveBayes ### 
 
@@ -103,4 +139,3 @@ testeArbo = ArboRecFinal[- particaoArbo$Resample1,]
 # confusionMatrix(previsaoPartArbo$previsaoPartArbo, testeArbo$tp_classificacao_final)
 
 # save(arboRpart, file="arboRpart.Rdata")
-

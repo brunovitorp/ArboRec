@@ -22,26 +22,26 @@ Inputs {.sidebar}
 # shiny inputs defined here
 ```
 
-Pagina 01
+BI - Arboviroses {data-icon="fa-chart-pie"}
 ====================================
 
-
-Linha 01
+Row {.tabset .tabset-fade}
 -------------------------------------
-    
-### Chart 1
-    
-```{r}
-```
+   
+### Ocorrências de Arboviroses
 
+```{r}
+```   
+ 
 ### Chart 2
-
+    
 ```{r}
 ```
+
 ### Chart 3
-
+    
 ```{r}
 ```
 
-Pagina 02
+Cubo de Dados - Arboviroses{data-icon="fa-table"}
 ====================================
