@@ -1,0 +1,862 @@
+{
+    "metadados": {
+        "cabecalho": {
+            "titulo": "Casos de Dengue, Zika e Chikungunya",
+            "descricao": "Registro dos casos de Dengue, Zica e Chikungunya com registros nas unidades de saúde do Recife, públicas ou particulares.",
+            "categoria_vcge": "http://vocab.e.gov.br/2011/03/vcge#saude",
+            "fonte_dados": "http://dados.recife.pe.gov.br",
+            "licenca": "Open Database License (ODbL)",
+            "responsavel_dados": "Secretaria de Saúde",
+            "responsavel_disponibilizar": "Emprel",
+            "frequencia_atualizacao": "",
+            "endereco_dataset": "http://dados.recife.pe.gov.br/dataset/casos-de-dengue-zika-e-chikungunya",
+            "status": "ativo",
+            "endereco_dataset_substituto": "",
+            "granularidade": "",
+            "etiquetas": "Chikungunya, Dengue, Zica, epidemiologia, saúde, vírus"
+        },
+        "recursos": [
+            {
+                "identificador": "http://dados.recife.pe.gov.br/dataset/casos-de-dengue-zika-e-chikungunya/resource/2a2ef847-7063-462e-bf76-a49ebc9a6d13",
+                "titulo": "Casos de Dengue em 2016",
+                "formato": "csv",
+                "descricao": "Contém os registros de casos suspeitos de dengues com dados sobre a data de notificação, classificação, os casos confirmados, descartados ou inconclusivos, os critério de confirmação, a evolução do caso e localização."
+            }
+        ],
+        "campos": [
+            {
+                "codigo": "num_notificacao",
+                "descricao": "Número da Notificação",
+                "tipo": "Num",
+                "tamanho": 7,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "tp_notificacao",
+                "descricao": "Identifica o tipo da notificação",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1 – Negativa, 2 – Individual,3 – Surto,4 – Agregado"
+            },
+            {
+                "codigo": "co_cid",
+                "descricao": "",
+                "tipo": "Char",
+                "tamanho": 10,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "dt_notificacao",
+                "descricao": "Data de preenchimento da ficha de notificação.",
+                "tipo": "Date",
+                "tamanho": 10,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "ds_semana_notificacao",
+                "descricao": "Semana epidemiológica que o caso foi notificado.",
+                "tipo": "Num",
+                "tamanho": 20,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "notificacao_ano",
+                "descricao": "Ano da notificação",
+                "tipo": "Num",
+                "tamanho": 4,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "co_uf_notificacao",
+                "descricao": "Tabela com Códigos e siglas padronizados pelo IBGE",
+                "tipo": "Char",
+                "tamanho": 25,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "co_municipio_notificacao",
+                "descricao": "Tabela com Código e nome dos municípios do cadastro do IBGE (tabela municipi.dbf)",
+                "tipo": "Num",
+                "tamanho": 20,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "id_regional",
+                "descricao": "Campo com código da regional de saúde da tabela de município do sistema",
+                "tipo": "Num",
+                "tamanho": 20,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "co_unidade_notificacao",
+                "descricao": "Códigos e nomes da tabela do cadastro Nacional de Estabelecimento de Saúde (CNES)",
+                "tipo": "Num",
+                "tamanho": 20,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "dt_diagnostico_sintoma",
+                "descricao": "Data dos primeiros sintomas do caso de agravo agudo.",
+                "tipo": "Date",
+                "tamanho": 10,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "ds_semana_sintoma",
+                "descricao": "Semanas do calendário epidemiológico padronizado.",
+                "tipo": "Num",
+                "tamanho": 10,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "dt_nascimento",
+                "descricao": "Data de nascimento do paciente",
+                "tipo": "Date",
+                "tamanho": 10,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "nu_idade",
+                "descricao": "A composição da variável obedece o seguinte critério: 1. Hora 2. Dia 3. Mês 4. Ano",
+                "tipo": "Num",
+                "tamanho": 10,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "tp_sexo",
+                "descricao": "Sexo do paciente",
+                "tipo": "Char",
+                "tamanho": 1,
+                "valores_permitidos": "M- Masculino, F- Feminino, I- Ignorado"
+            },
+            {
+                "codigo": "tp_gestante",
+                "descricao": "Idade gestacional da paciente.",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1. 1º Trimestre, 2. 2º Trimestre, 3. 3º Trimestre, 4. Idade gestacional ignorada, 5. Não, 6. Não se aplica, 9. Ignorado"
+            },
+            {
+                "codigo": "tp_raca_cor",
+                "descricao": "Considera-se cor ou raça declarada pela pessoa.",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1- branca, 2- preta, 3- amarela, 4- parda, 5- indígena, 9 Ignorado"
+            },
+            {
+                "codigo": "tp_escolaridade",
+                "descricao": "Série e grau que a pessoa está frequentando ou frequentou considerando a última série concluída com aprovação ou grau de instrução do paciente por ocasião da notificação.",
+                "tipo": "Num",
+                "tamanho": 2,
+                "valores_permitidos": "43 Analfabeto, 1- 1ª a 4ª série incompleta do EF, 2- 4ª série completa do EF (antigo 1° grau), 3- 5ª à 8ª série incompleta do EF (antigo ginásio ou 1°grau), 4- Ensino fundamental completo (antigo ginásio ou 1° grau), 5- Ensino médio incompleto(antigo colegial ou 2° grau), 6- Ensino médio completo (antigo colegial ou 2° grau), 7- Educação superior incompleta, 8- Educação superior completa, 9- Ignorado, 10- Não se aplica"
+            },
+            {
+                "codigo": "co_uf_residencia",
+                "descricao": "Tabela com Códigos e siglas padronizados pelo IBGE (tabela municipi.dbf)",
+                "tipo": "Num",
+                "tamanho": 2,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "co_municipio_residencia",
+                "descricao": "Tabela com Códigos e nomes padronizados pelo IBGE",
+                "tipo": "Num",
+                "tamanho": 10,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "co_regional_residencia",
+                "descricao": "Código regional de residência do paciente por ocasião da notificação.",
+                "tipo": "Num",
+                "tamanho": 3,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "co_distrito_residencia",
+                "descricao": "Códigos e nomes padronizados segundo Tabela disponibilizada pelo sistema para cadastramento pelo gestor municipal do Sinan",
+                "tipo": "Num",
+                "tamanho": 3,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "co_bairro_residencia",
+                "descricao": "Código do bairro de residência do paciente por ocasião da notificação.",
+                "tipo": "Num",
+                "tamanho": 2,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "no_bairro_residencia",
+                "descricao": "Nome do Bairro ou outra localidade referente ao município ou Distrito selecionado.",
+                "tipo": "Char",
+                "tamanho": 100,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "co_logradouro_residencia",
+                "descricao": "Tipo e nome do logradouro digitado na entrada de dados ou, se disponível selecionado em tabela de logradouros do município (código e descrição)",
+                "tipo": "Num",
+                "tamanho": 8,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "nome_logradouro_residencia",
+                "descricao": "título e nome do logradouro",
+                "tipo": "Char",
+                "tamanho": 100,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "co_geo_campo_1",
+                "descricao": "Campo para Geo-Referenciamento",
+                "tipo": "Num",
+                "tamanho": 8,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "co_geo_campo_2",
+                "descricao": "Campo para Geo-Referenciamento",
+                "tipo": "Num",
+                "tamanho": 8,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "nu_cep",
+                "descricao": "CEP de residência do paciente",
+                "tipo": "Num",
+                "tamanho": 8,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "tp_zona_residencia",
+                "descricao": "Zona de residência do paciente por ocasião da notificação",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1. urbana, 2. rural, 3. periurbana, 9. ignorado"
+            },
+            {
+                "codigo": "co_pais_residencia",
+                "descricao": "Tabela com código e descrição de paises.",
+                "tipo": "Char",
+                "tamanho": 4,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "dt_investigacao",
+                "descricao": "Data de Digitação da primeira inclusão da notificação no sistema.",
+                "tipo": "date",
+                "tamanho": 10,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "co_cbo_ocupacao",
+                "descricao": "Informar a atividade exercida pelo paciente no setor formal, informal ou autônomo ou sua última atividade exercida quando paciente for desempregado.",
+                "tipo": "Char",
+                "tamanho": 100,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "febre",
+                "descricao": "Informar qual sinal clínico ou achados laboratoriais inespecíficos",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1 – Sim, 2 – Não"
+            },
+            {
+                "codigo": "mialgia",
+                "descricao": "Informar qual sinal clínico ou achados laboratoriais inespecíficos",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1 – Sim, 2 – Não"
+            },
+            {
+                "codigo": "cefaleia",
+                "descricao": "Informar qual sinal clínico ou achados laboratoriais inespecíficos",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1 – Sim, 2 – Não"
+            },
+            {
+                "codigo": "exantema",
+                "descricao": "Informar qual sinal clínico ou achados laboratoriais inespecíficos",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1 – Sim, 2 – Não"
+            },
+            {
+                "codigo": "vomito",
+                "descricao": "Informar qual sinal clínico ou achados laboratoriais inespecíficos",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1 – Sim, 2 – Não"
+            },
+            {
+                "codigo": "nausea",
+                "descricao": "Informar qual sinal clínico ou achados laboratoriais inespecíficos",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1 – Sim, 2 – Não"
+            },
+            {
+                "codigo": "dor_costas",
+                "descricao": "Informar qual sinal clínico ou achados laboratoriais inespecíficos",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1 – Sim, 2 – Não"
+            },
+            {
+                "codigo": "conjutivite",
+                "descricao": "Informar qual sinal clínico ou achados laboratoriais inespecíficos",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1 – Sim, 2 – Não"
+            },
+            {
+                "codigo": "artrite",
+                "descricao": "Informar qual sinal clínico ou achados laboratoriais inespecíficos",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1 – Sim, 2 – Não"
+            },
+            {
+                "codigo": "artralgia",
+                "descricao": "Informar qual sinal clínico ou achados laboratoriais inespecíficos",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1 – Sim, 2 – Não"
+            },
+            {
+                "codigo": "petequia_n",
+                "descricao": "Informar qual sinal clínico ou achados laboratoriais inespecíficos",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1 – Sim, 2 – Não"
+            },
+            {
+                "codigo": "leucopenia",
+                "descricao": "Informar qual sinal clínico ou achados laboratoriais inespecíficos",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1 – Sim, 2 – Não"
+            },
+            {
+                "codigo": "laco",
+                "descricao": "Informar qual sinal clínico ou achados laboratoriais inespecíficos",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1 – Sim, 2 – Não"
+            },
+            {
+                "codigo": "dor_retro",
+                "descricao": "Informar qual sinal clínico ou achados laboratoriais inespecíficos",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1 – Sim, 2 – Não"
+            },
+            {
+                "codigo": "diabetes",
+                "descricao": "Informar qual sinal clínico ou achados laboratoriais inespecíficos",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1 – Sim, 2 – Não"
+            },
+            {
+                "codigo": "hematolog",
+                "descricao": "Informar qual sinal clínico ou achados laboratoriais inespecíficos",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1 – Sim, 2 – Não"
+            },
+            {
+                "codigo": "hepatopat",
+                "descricao": "Informar qual sinal clínico ou achados laboratoriais inespecíficos",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1 – Sim, 2 – Não"
+            },
+            {
+                "codigo": "renal",
+                "descricao": "Informar qual sinal clínico ou achados laboratoriais inespecíficos",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1 – Sim, 2 – Não"
+            },
+            {
+                "codigo": "hipertensao",
+                "descricao": "Informar qual sinal clínico ou achados laboratoriais inespecíficos",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1 – Sim, 2 – Não"
+            },
+            {
+                "codigo": "acido_pept",
+                "descricao": "Informar qual sinal clínico ou achados laboratoriais inespecíficos",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1 – Sim, 2 – Não"
+            },
+            {
+                "codigo": "auto_imune",
+                "descricao": "Informar qual sinal clínico ou achados laboratoriais inespecíficos",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1 – Sim, 2 – Não"
+            },
+            {
+                "codigo": "dt_chil_s1",
+                "descricao": "Data da Coleta Exame Sorológico (IgM) Chikungunya soro 1",
+                "tipo": "date",
+                "tamanho": 10,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "dt_chil_s2",
+                "descricao": "Data da Coleta Exame Sorológico (IgM) Chikungunya soro 2",
+                "tipo": "date",
+                "tamanho": 10,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "dt_prnt",
+                "descricao": "Data da Coleta Exame PRNT",
+                "tipo": "date",
+                "tamanho": 10,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "res_chiks1",
+                "descricao": "Resultado do Exame Sorológico (IgM) soro 1 para Chikunugnya",
+                "tipo": "num",
+                "tamanho": 1,
+                "valores_permitidos": "1-Reagente, 2-Não Reagente, 3-Inconclusivo, 4-Não realizado"
+            },
+            {
+                "codigo": "res_chiks2",
+                "descricao": "Resultado do Exame Sorológico (IgM) soro 2 para Chikunugnya",
+                "tipo": "num",
+                "tamanho": 1,
+                "valores_permitidos": "1-Reagente, 2-Não Reagente, 3-Inconclusivo, 4-Não realizado"
+            },
+            {
+                "codigo": "resul_prnt",
+                "descricao": "Resultado do Exame Sorológico (IgM) soro 2 para Chikunugnya",
+                "tipo": "num",
+                "tamanho": 1,
+                "valores_permitidos": "1-Reagente, 2-Não Reagente, 3-Inconclusivo, 4-Não realizado"
+            },
+            {
+                "codigo": "dt_coleta_exame",
+                "descricao": "Data da Coleta Exame Sorológico (IgM)",
+                "tipo": "date",
+                "tamanho": 10,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "tp_result_exame",
+                "descricao": "Resultado do Exame Sorológico (IgM)",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1-Reagente, 2-Não Reagente, 3-Inconclusivo, 4-Não realizado"
+            },
+            {
+                "codigo": "dt_coleta_NS1",
+                "descricao": "Data da coleta Exame Sorologia ELISA",
+                "tipo": "date",
+                "tamanho": 10,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "tp_result_NS1",
+                "descricao": "Resultado do Exame Sorologia ELISA",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1-Reagente, 2-Não Reagente, 3-Inconclusivo, 4-Não realizado"
+            },
+            {
+                "codigo": "dt_coleta_isolamento",
+                "descricao": "Data da Coleta Isolamento Viral",
+                "tipo": "date",
+                "tamanho": 10,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "tp_result_isolamento",
+                "descricao": "Resultado Exame de Isolamento Viral",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1-Reagente, 2-Não Reagente, 3-Inconclusivo, 4-Não realizado"
+            },
+            {
+                "codigo": "dt_coleta_rtpcr",
+                "descricao": "Data de Coleta do Exame de RT-PCR",
+                "tipo": "date",
+                "tamanho": 10,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "tp_result_rtpcr",
+                "descricao": "Resultado do Exame de RT-PCR",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1-Reagente, 2-Não Reagente, 3-Inconclusivo, 4-Não realizado"
+            },
+            {
+                "codigo": "tp_sorotipo",
+                "descricao": "Sorotipo",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1-DEN 1, 2-DEN 2, 3 DEN 3, 4-DEN 4"
+            },
+            {
+                "codigo": "tp_result_histopatologia",
+                "descricao": "Resultado Exame de Histopatologia",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1-Positivo, 2-Negativo, 3-Inconclusivo, 4-Não realizado"
+            },
+            {
+                "codigo": "tp_result_imunohistoquimica",
+                "descricao": "Resultado Exame de Imunohistoquímica",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1-Positivo, 2-Negativo, 3-Inconclusivo, 4-Não realizado"
+            },
+            {
+                "codigo": "st_ocorreu_hospitalizacao",
+                "descricao": "Informa se ocorreu hospitalização",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1-Sim, 2-Não, 9-Ignorado"
+            },
+            {
+                "codigo": "dt_internacao",
+                "descricao": "Informar a data de internação do paciente",
+                "tipo": "date",
+                "tamanho": 10,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "co_uf_hospital",
+                "descricao": "Sigla da UF onde o paciente foi hospitalizado",
+                "tipo": "Num",
+                "tamanho": 2,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "co_municipio_hospital",
+                "descricao": "Código e nome completo do município onde o paciente foi hospitalizado",
+                "tipo": "Num",
+                "tamanho": 10,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "co_unidade_hospital",
+                "descricao": "Nome completo da unidade de saúde em que o paciente foi notificado",
+                "tipo": "Num",
+                "tamanho": 10,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "nu_ddd_hospital",
+                "descricao": "Código DDD do telefone da unidade ",
+                "tipo": "Num",
+                "tamanho": 10,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "nu_telefone_hospital",
+                "descricao": "Telefone da unidade de saúde onde o paciente foi hospitalizado",
+                "tipo": "Num",
+                "tamanho": 10,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "tp_autoctone_residencia",
+                "descricao": "Indica se o caso é autóctone do município de residência.",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1 – Sim, 2 – Não, 3 – Indeterminado"
+            },
+            {
+                "codigo": "co_uf_infeccao",
+                "descricao": "Tabela com siglas e código padronizados pelo IBGE",
+                "tipo": "Num",
+                "tamanho": 10,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "co_pais_infeccao",
+                "descricao": "Tabela com código e descrição de paises",
+                "tipo": "Num",
+                "tamanho": 10,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "co_municipio_infeccao",
+                "descricao": "Tabela com Códigos e nomes padronizados pelo IBGE",
+                "tipo": "Num",
+                "tamanho": 10,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "co_distrito_infeccao",
+                "descricao": "Tabela com Códigos e nomes padronizados segundo Tabela disponibilizada pelo sistema para cadastramento pelo gestor municipal do Sinan.",
+                "tipo": "Num",
+                "tamanho": 10,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "co_bairro_infeccao",
+                "descricao": "Tabela de localidades (código e nomes) carregada a partir do sistema LOCALIDADE.",
+                "tipo": "Num",
+                "tamanho": 10,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "no_bairro_infeccao",
+                "descricao": "Tabela de localidades (código e nomes) carregada a partir do sistema LOCALIDADE.",
+                "tipo": "Num",
+                "tamanho": 10,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "tp_classificacao_final",
+                "descricao": "Informar a classificação do caso.",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1 - Dengue Clássico, 2 - Dengue com Complicações, 3 - Febre Hemorrágica do Dengue – FHD, 4 – Síndrome do choque da Dengue – SCD, 5 -Descartado, 8-Inconclusivo, 10-Dengue, 11-Dengue com sinais de alarme, 12-Dengue grave"
+            },
+            {
+                "codigo": "tp_criterio_confirmacao",
+                "descricao": "Informar o critério de confirmação/descarte",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1-Laboratório, 2-Clínico Epidemiológico, 3-Em investigação"
+            },
+            {
+                "codigo": "st_doenca_trabalho",
+                "descricao": "Informar Se o paciente adquiriu a doença em decorrência das condições/situação de trabalho",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1-Sim, 2-Não, 9-Ignorado"
+            },
+            {
+                "codigo": "clinc_chik",
+                "descricao": "Informar a apresentação clínica do caso de Chikungunya",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1- Aguda, 2- Crônica"
+            },
+            {
+                "codigo": "tp_evolucao_caso",
+                "descricao": "Informar a evolução do caso.",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1-cura, 2-óbito por dengue, 3-óbito por outras causas, 4-óbito em investigação, 9-ignorado"
+            },
+            {
+                "codigo": "dt_obito",
+                "descricao": "Informar a data do óbito.",
+                "tipo": "date",
+                "tamanho": 10,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "dt_encerramento",
+                "descricao": "Informar a data do encerramento do caso",
+                "tipo": "date",
+                "tamanho": 10,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "alrm_hipot",
+                "descricao": "Informar qual sinal de alarme foi encontrado",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1 – Sim, 2 – Não"
+            },
+            {
+                "codigo": "alrm_plaq",
+                "descricao": "Informar qual sinal de alarme foi encontrado",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1 – Sim, 2 – Não"
+            },
+            {
+                "codigo": "alrm_vom",
+                "descricao": "Informar qual sinal de alarme foi encontrado",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1 – Sim, 2 – Não"
+            },
+            {
+                "codigo": "alrm_sang",
+                "descricao": "Informar qual sinal de alarme foi encontrado",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1 – Sim, 2 – Não"
+            },
+            {
+                "codigo": "alrm_hemat",
+                "descricao": "Informar qual sinal de alarme foi encontrado",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1 – Sim, 2 – Não"
+            },
+            {
+                "codigo": "alrm_abdom",
+                "descricao": "Informar qual sinal de alarme foi encontrado",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1 – Sim, 2 – Não"
+            },
+            {
+                "codigo": "alrm_letar",
+                "descricao": "Informar qual sinal de alarme foi encontrado",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1 – Sim, 2 – Não"
+            },
+            {
+                "codigo": "alrm_hepat",
+                "descricao": "Informar qual sinal de alarme foi encontrado",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1 – Sim, 2 – Não"
+            },
+            {
+                "codigo": "alrm_liq",
+                "descricao": "Informar qual sinal de alarme foi encontrado",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1 – Sim, 2 – Não"
+            },
+            {
+                "codigo": "dt_alrm",
+                "descricao": "Informar data de início dos sinais de alarme. Considerar a data do primeiro sinal de alarme manifestado.",
+                "tipo": "Date",
+                "tamanho": 10,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "mani_hemor",
+                "descricao": "manifestações hemorrágicas",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1- Sim, 2- Não, 9- Ignorado"
+            },
+            {
+                "codigo": "epistaxe",
+                "descricao": "sangramento nasal",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1- Sim, 2- Não, 9- Ignorado"
+            },
+            {
+                "codigo": "gengivo",
+                "descricao": "sangramento na gengiva",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1- Sim, 2- Não, 9- Ignorado"
+            },
+            {
+                "codigo": "metro",
+                "descricao": "hemorragia uterina em intervalos irregulares, e que ocorre fora da menstruação",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1- Sim, 2- Não, 9- Ignorado"
+            },
+            {
+                "codigo": "petequias",
+                "descricao": "é um pequeno ponto vermelho no corpo (na pele ou mucosas), causado por uma pequena hemorragia de vasos sanguíneos",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1- Sim, 2- Não, 9- Ignorado"
+            },
+            {
+                "codigo": "hematura",
+                "descricao": "presença de sangue na urina",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1- Sim, 2- Não, 9- Ignorado"
+            },
+            {
+                "codigo": "sangram",
+                "descricao": "sangramento gastrointestinal",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1- Sim, 2- Não, 9- Ignorado"
+            },
+            {
+                "codigo": "laco_n",
+                "descricao": "prova do laço",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1- Sim, 2- Não, 9- Ignorado"
+            },
+            {
+                "codigo": "plasmatico",
+                "descricao": "(Identifica se houve extravasamento plasmático",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1- Sim, 2- Não, 9- Ignorado"
+            },
+            {
+                "codigo": "evidencia",
+                "descricao": "se houve extravasamento plasmático, foi evidenciado por",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1-Hemoconcentração, 2-Derrames cavitários, 3-Hipoproteinemia"
+            },
+            {
+                "codigo": "plaq_menor",
+                "descricao": "menor valor das plaquetas",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "complica",
+                "descricao": "no caso de complicações, qual(is) o(s) tipo(s)",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "1-Alterações neurológicas, 2-Disfunção cardiorrespiratória, 3-Insuficiência hepática, 4-Plaquetas <50.000 mm3, 5-Hemorragia digestiva, 6-Derrames cavitários, 7-Leucometria < 1000, 8-Não se enquadra nos critérios de FHD"
+            },
+            {
+                "codigo": "ds_obs",
+                "descricao": "informações complementares",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "tp_duplicidade",
+                "descricao": "tipo duplicidade",
+                "tipo": "num",
+                "tamanho": 5,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "dt_digitacao",
+                "descricao": "Data de digitação",
+                "tipo": "date",
+                "tamanho": 10,
+                "valores_permitidos": ""
+            },
+            {
+                "codigo": "tp_fluxo_retorno",
+                "descricao": "Identifica se o registro está habilitado para o local de residência ou foi enviado pelo fluxo de retorno.",
+                "tipo": "Num",
+                "tamanho": 1,
+                "valores_permitidos": "0 - Não, 1 - habilitado para envio, 2 - Enviado, 3 - distrito, 4 - enviado para distrito, 5 - excluído para fluxo, Obs.: categorias 2, 3, 4 e 5 preenchidas apenas pelo Sinan Net."
+            },
+            {
+                "codigo": "ds_identificador_registro",
+                "descricao": "Corresponde ao código de instalação do sistema: código do município",
+                "tipo": "Num",
+                "tamanho": 50,
+                "valores_permitidos": ""
+            }
+        ]
+    }
+}
