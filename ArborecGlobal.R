@@ -74,22 +74,22 @@ colnames(ArboRecFinal) <- c('Semana', 'Ano', 'Sexo', 'SeGestante', 'Raca', 'Esco
 
 
 #Analisando os dados
-table(ArboRecFinal$ClassificacaoFinal, exclude = NULL)
-table(ArboRecFinal$Sexo, exclude = NULL)
-plot(ArboRecFinal$ClassificacaoFinal)
+#table(ArboRecFinal$ClassificacaoFinal, exclude = NULL)
+#table(ArboRecFinal$Sexo, exclude = NULL)
+#plot(ArboRecFinal$ClassificacaoFinal)
 
 #Criação da base de treinamento e de teste
-# particaoArbo = createDataPartition(1:nrow(ArboRecFinal), p=.7) 
-# treinoArbo = ArboRecFinal[particaoArbo$Resample1,] 
-# testeArbo = ArboRecFinal[- particaoArbo$Resample1,] 
+particaoArbo = createDataPartition(1:nrow(ArboRecFinal), p=.7) 
+treinoArbo = ArboRecFinal[particaoArbo$Resample1,] 
+testeArbo = ArboRecFinal[- particaoArbo$Resample1,] 
 
 ### Análise de NaiveBayes ### 
 
-# arboNaiveBayes = naiveBayes(tp_classificacao_final ~., treinoArbo)
-# arboNaiveBayes
+arboNaiveBayes = naiveBayes(ClassificacaoFinal ~., treinoArbo)
+arboNaiveBayes
 
-# previsaoArbo = predict(arboNaiveBayes, testeArbo) 
-# confusionMatrix(previsaoArbo, testeArbo$tp_classificacao_final)
+previsaoArbo = predict(arboNaiveBayes, testeArbo) 
+confusionMatrix(previsaoArbo, testeArbo$ClassificacaoFinal)
 
 # save(arboNaiveBayes, file="arboNaiveBayesModel.Rdata")
 
